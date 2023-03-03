@@ -1,0 +1,42 @@
+.backdrop {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+.overlay {
+    background-color: white;
+    z-index: 100;
+    position: fixed;
+    top: 20vh;
+    left: 10%;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.overlay header {
+    background-color: blueviolet;
+    padding: 1rem;
+}
+.overlay header h2 {
+    margin: 0;
+    font-weight: bold;
+}
+.overlay p {
+    margin: 1rem;
+}
+.overlay footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .overlay {
+        max-width: 40rem;
+        left: calc(50% - 20rem);
+    }
+}
