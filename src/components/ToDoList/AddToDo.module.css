@@ -1,0 +1,8 @@
+.input {
+    margin: 1rem;
+}
+.input input {
+    outline: none;
+    border: none;
+    border-bottom: 1px black solid;
+}

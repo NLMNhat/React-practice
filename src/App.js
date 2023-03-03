@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import AddToDo from "./components/ToDoList/AddToDo";
+import { useState } from "react";
+import Card from "./components/UI/Card";
+import ToDoList from "./components/ToDoList/ToDoList";
+import Footer from "./components/UI/Footer";
+import classes from "./App.module.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [tasks, setTask] = useState([]);
+    const submitFormHandler = (newTask) => {
+        setTask((prevState) => {
+            const randomID = String(Math.floor(Math.random() * 10000));
+            return [...prevState, { task: newTask, id: randomID }];
+        });
+    };
+    const deleteHandler = (id) => {
+        console.log("click");
+        setTask((prevState) => {
+            const newData = prevState.filter((task) => task.id !== id);
+            return newData;
+        });
+    };
+    let taskCount = tasks.length;
+    return (
+        <Card className={classes.app}>
+            <AddToDo submitForm={submitFormHandler}></AddToDo>
+            <ToDoList tasks={tasks} onDelete={deleteHandler} />
+            <Footer taskCount={taskCount} />
+        </Card>
+    );
 }
 
 export default App;
